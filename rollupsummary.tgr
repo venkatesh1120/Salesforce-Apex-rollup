@@ -1,0 +1,22 @@
+trigger rollupsummary on Contact (after insert, after update, after delete, after undelete) {
+    
+    helperclassroll.newlist = trigger.new;
+    
+    helperclassroll.oldlist = trigger.old;
+    
+    if(trigger.isAfter && trigger.isInsert) {
+        
+        helperclassroll.afterInsertOperation();
+    }
+    if(trigger.isAfter && trigger.isUpdate) {
+        helperclassroll.afterUpdateOperation();
+    }
+    
+    if(trigger.isAfter && trigger.isDelete) {
+        helperclassroll.afterDeleteOperation();
+    }
+    if(trigger.isAfter && trigger.isUnDelete) {
+        helperclassroll.afterUndeleteOperation();
+    }
+    
+}
